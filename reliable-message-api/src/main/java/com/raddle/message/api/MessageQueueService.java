@@ -3,8 +3,8 @@ package com.raddle.message.api;
 import java.util.Map;
 
 import com.raddle.message.exception.AlreadyExistsException;
-import com.raddle.message.exception.ExistsMessageException;
-import com.raddle.message.exception.NotExistException;
+import com.raddle.message.exception.MessageExistsException;
+import com.raddle.message.exception.NotExistsException;
 
 public interface MessageQueueService {
 	/**
@@ -39,10 +39,10 @@ public interface MessageQueueService {
 	 * 
 	 * @param queueId 队列id
 	 * @param force true不管队列中是否存在未发送的消息
-	 * @throws ExistsMessageException 如果force为false队列中有消息存在
-	 * @throws NotExistException 队列不存在
+	 * @throws MessageExistsException 如果force为false队列中有消息存在
+	 * @throws NotExistsException 队列不存在
 	 */
-	public void unregisterQueue(String queueId, boolean force) throws ExistsMessageException, NotExistException;
+	public void unregisterQueue(String queueId, boolean force) throws MessageExistsException, NotExistsException;
 
 	/**
 	 * 向队列发送消息
@@ -51,16 +51,16 @@ public interface MessageQueueService {
 	 * @param headers 消息头
 	 * @param body 消息体
 	 * @param expireSeconds 过期时间，-1表示永不过期
-	 * @throws NotExistException 队列不存在
+	 * @throws NotExistsException 队列不存在
 	 */
-	public void sendMessageToQueue(String queueId, Map<String, String> headers, byte[] body, int expireSeconds) throws NotExistException;
+	public void sendMessageToQueue(String queueId, Map<String, String> headers, byte[] body, int expireSeconds) throws NotExistsException;
 
 	/**
 	 * 连接到队列接收消息，多个客户端连接，每个消息只发给其中一个客户端
 	 * 
 	 * @param queueId 队列id
 	 * @param receiver 接收回调
-	 * @throws NotExistException 队列不存在
+	 * @throws NotExistsException 队列不存在
 	 */
-	public void connectQueue(String queueId, MessageReceiver receiver) throws NotExistException;
+	public void connectQueue(String queueId, MessageReceiver receiver) throws NotExistsException;
 }
