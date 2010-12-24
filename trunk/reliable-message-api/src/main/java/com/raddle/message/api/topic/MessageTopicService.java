@@ -1,4 +1,4 @@
-package com.raddle.message.topic;
+package com.raddle.message.api.topic;
 
 import java.util.Map;
 
