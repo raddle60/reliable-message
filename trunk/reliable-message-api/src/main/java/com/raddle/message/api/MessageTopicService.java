@@ -3,8 +3,8 @@ package com.raddle.message.api;
 import java.util.Map;
 
 import com.raddle.message.exception.AlreadyExistsException;
-import com.raddle.message.exception.ExistsMessageException;
-import com.raddle.message.exception.NotExistException;
+import com.raddle.message.exception.MessageExistsException;
+import com.raddle.message.exception.NotExistsException;
 
 public interface MessageTopicService {
 
@@ -40,10 +40,10 @@ public interface MessageTopicService {
 	 * 
 	 * @param topicId 主题id
 	 * @param force true不管主题中是否存在未发送的消息
-	 * @throws ExistsMessageException 如果force为false队列中有消息存在
-	 * @throws NotExistException 主题不存在
+	 * @throws MessageExistsException 如果force为false队列中有消息存在
+	 * @throws NotExistsException 主题不存在
 	 */
-	public void unregisterTopic(String topicId, boolean force) throws ExistsMessageException, NotExistException;
+	public void unregisterTopic(String topicId, boolean force) throws MessageExistsException, NotExistsException;
 
 	/**
 	 * 发送消息到主题
@@ -52,9 +52,9 @@ public interface MessageTopicService {
 	 * @param headers 消息头
 	 * @param body 消息体
 	 * @param expireSeconds 过期时间，-1表示永不过期
-	 * @throws NotExistException 主题不存在
+	 * @throws NotExistsException 主题不存在
 	 */
-	public void sendMessageToTopic(String topicId, Map<String, String> headers, byte[] body, int expireSeconds) throws NotExistException;
+	public void sendMessageToTopic(String topicId, Map<String, String> headers, byte[] body, int expireSeconds) throws NotExistsException;
 
 	/**
 	 * 连接到主题，接收消息，同一组的客户端，消息只发送给其中一个
@@ -63,17 +63,17 @@ public interface MessageTopicService {
 	 * @param receiverId 接收者id，必须唯一
 	 * @param groupId 组id，如果存在，就加入，不存在就创建
 	 * @param receiver 接收者
-	 * @throws NotExistException 主题不存在
+	 * @throws NotExistsException 主题不存在
 	 * @throws AlreadyExistsException 同receiverId的接收者已存在
 	 */
-	public void connectTopic(String topicId, String receiverId, String groupId, MessageReceiver receiver) throws NotExistException, AlreadyExistsException;
+	public void connectTopic(String topicId, String receiverId, String groupId, MessageReceiver receiver) throws NotExistsException, AlreadyExistsException;
 	
 	/**
 	 * 接收者是否存在
 	 * @param topicId 主题id
 	 * @param receiverId 接收者id
 	 * @return true存在，false不存在
-	 * @throws NotExistException 主题不存在
+	 * @throws NotExistsException 主题不存在
 	 */
-	public boolean isReceiverExists(String topicId,String receiverId) throws NotExistException;
+	public boolean isReceiverExists(String topicId,String receiverId) throws NotExistsException;
 }

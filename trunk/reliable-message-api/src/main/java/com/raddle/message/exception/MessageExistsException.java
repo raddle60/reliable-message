@@ -7,27 +7,27 @@ package com.raddle.message.exception;
  * @author xurong
  *
  */
-public class ExistsMessageException extends RuntimeException {
+public class MessageExistsException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	public ExistsMessageException() {
+	public MessageExistsException() {
 	}
 
 	/**
 	 * @param message
 	 */
-	public ExistsMessageException(String message) {
+	public MessageExistsException(String message) {
 		super(message);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public ExistsMessageException(Throwable cause) {
+	public MessageExistsException(Throwable cause) {
 		super(cause);
 	}
 
@@ -35,7 +35,7 @@ public class ExistsMessageException extends RuntimeException {
 	 * @param message
 	 * @param cause
 	 */
-	public ExistsMessageException(String message, Throwable cause) {
+	public MessageExistsException(String message, Throwable cause) {
 		super(message, cause);
 	}
 

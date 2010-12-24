@@ -7,27 +7,27 @@ package com.raddle.message.exception;
  * @author xurong
  *
  */
-public class NotExistException extends RuntimeException {
+public class NotExistsException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
-	public NotExistException() {
+	public NotExistsException() {
 	}
 
 	/**
 	 * @param message
 	 */
-	public NotExistException(String message) {
+	public NotExistsException(String message) {
 		super(message);
 	}
 
 	/**
 	 * @param cause
 	 */
-	public NotExistException(Throwable cause) {
+	public NotExistsException(Throwable cause) {
 		super(cause);
 	}
 
@@ -35,7 +35,7 @@ public class NotExistException extends RuntimeException {
 	 * @param message
 	 * @param cause
 	 */
-	public NotExistException(String message, Throwable cause) {
+	public NotExistsException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
