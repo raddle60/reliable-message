@@ -28,6 +28,14 @@ public interface MessageTopicService {
 	public void registerTemporaryTopic(String topicId, String desc, int expireSecondsIfNoMessage) throws AlreadyExistsException;
 
 	/**
+	 * 主题是否存在
+	 * 
+	 * @param topicId 主题id
+	 * @return true存在，false 不存在
+	 */
+	public boolean isTopicExists(String topicId);
+
+	/**
 	 * 删除主题
 	 * 
 	 * @param topicId 主题id
@@ -59,4 +67,13 @@ public interface MessageTopicService {
 	 * @throws AlreadyExistsException 同receiverId的接收者已存在
 	 */
 	public void connectTopic(String topicId, String receiverId, String groupId, MessageReceiver receiver) throws NotExistException, AlreadyExistsException;
+	
+	/**
+	 * 接收者是否存在
+	 * @param topicId 主题id
+	 * @param receiverId 接收者id
+	 * @return true存在，false不存在
+	 * @throws NotExistException 主题不存在
+	 */
+	public boolean isReceiverExists(String topicId,String receiverId) throws NotExistException;
 }
