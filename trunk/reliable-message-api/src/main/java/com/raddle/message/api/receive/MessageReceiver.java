@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.raddle.message.api;
+package com.raddle.message.api.receive;
 
 import java.util.Map;
 
