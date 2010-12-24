@@ -1,7 +1,8 @@
-package com.raddle.message.api;
+package com.raddle.message.topic;
 
 import java.util.Map;
 
+import com.raddle.message.api.receive.MessageReceiver;
 import com.raddle.message.exception.AlreadyExistsException;
 import com.raddle.message.exception.MessageExistsException;
 import com.raddle.message.exception.NotExistsException;
